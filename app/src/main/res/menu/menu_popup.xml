@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/textSize"
+        android:title="@string/adjust_text_size" />
+
+    <item android:id="@+id/clearTabs"
+        android:title="@string/clear_tabs" />
+
+    <item android:id="@+id/openSettings"
+        android:title="@string/open_settings" />
+</menu>

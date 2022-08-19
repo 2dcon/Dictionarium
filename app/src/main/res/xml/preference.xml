@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        app:key="dictPath"
+        app:title="@string/dictionary_path"
+        app:summary="Choose the folder in which .dict files are found"/>
+
+</PreferenceScreen>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Word"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:text="IPA"
+            android:id="@+id/ipa"
+            android:textColor="@color/ipa"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp" />
+    </LinearLayout>
+    <TextView
+        android:text="POS"
+        android:id="@+id/pos"
+        android:textColor="@color/pos"
+        android:textStyle="italic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <LinearLayout
+        android:id="@+id/definitions_by_pos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"/>
+
+</LinearLayout>

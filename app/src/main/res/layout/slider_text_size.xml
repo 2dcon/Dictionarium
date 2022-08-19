@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:id="@+id/frameDiscardSize"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/discard"
+            android:scaleX=".6"
+            android:scaleY=".6"
+            android:scaleType="center"/>
+        <Button
+            android:id="@+id/discardSize"
+            android:background="@drawable/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/textSizeSlider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@+id/frameApplySize"
+        android:layout_toEndOf="@+id/frameDiscardSize"
+        android:valueFrom="10"
+        android:valueTo="50"
+        android:stepSize="1.0"/>
+
+    <FrameLayout
+        android:id="@+id/frameApplySize"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/apply"
+            android:scaleX=".75"
+            android:scaleY=".55"
+            android:scaleType="center"/>
+        <Button
+            android:id="@+id/applySize"
+            android:background="@drawable/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</RelativeLayout>

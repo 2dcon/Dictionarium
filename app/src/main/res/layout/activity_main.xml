@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.slidingpanelayout.widget.SlidingPaneLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_pane_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutTextSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/relativeLayoutPager"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayoutTopBar">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/relativeLayoutTopBar"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/entryTabs"
+                android:layout_width="247dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentBottom="true"
+                android:layout_toStartOf="@+id/frameMenu"
+                android:layout_toEndOf="@+id/frameSearch"
+                app:tabBackground="@drawable/tab" />
+
+            <FrameLayout
+                android:id="@+id/frameSearch"
+                android:layout_width="50dp"
+                android:layout_height="50dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/search"
+                    android:scaleY=".7"
+                    android:scaleX=".7"
+                    android:scaleType="fitCenter" />
+                <Button
+                    android:id="@+id/buttonSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/transparent"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frameMenu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/menu"
+                    android:scaleY=".7"
+                    android:scaleX=".7"
+                    android:scaleType="fitCenter" />
+                <Button
+                    android:id="@+id/buttonMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/transparent" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp" android:id="@+id/relativeLayoutPager"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@+id/guidelineR"
+            app:layout_constraintStart_toStartOf="@+id/guidelineL"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayoutTextSize">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent=".05"
+            android:id="@+id/guidelineL"/>
+        <androidx.constraintlayout.widget.Guideline
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintGuide_percent=".95"
+            android:id="@+id/guidelineR"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/detail_container"
+        android:name="com.fmaghi.dictionarium.SearchPaneFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/teal_700" />
+
+</androidx.slidingpanelayout.widget.SlidingPaneLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Dictionarium</string>
+    <string name="adjust_text_size">Adjust text size</string>
+    <string name="clear_tabs">Clear tabs</string>
+    <string name="open_settings">Settings</string>
+    <string name="dictionary_path">Path of dictionaries</string>
+    <string name="permission_required">READ_EXTERNAL_STORAGE</string>
+    <!--    preference keys-->
+    <string name="preference_file">com.fmaghi.dictionarium.PREFERENCE</string>
+    <string name="preference_dictionary_path">com.fmaghi.dictionarium.PREFERENCE.PATH</string>
+
+</resources>

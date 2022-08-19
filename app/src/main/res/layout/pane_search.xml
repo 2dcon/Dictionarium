@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/searchPaneRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineSL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineSR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".95" />
+
+    <FrameLayout
+        android:id="@+id/frameBack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleY=".7"
+            android:scaleX=".5"
+            android:background="@drawable/back"/>
+        <Button
+            android:id="@+id/buttonCloseSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/transparent" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/frameBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/editTextTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="0dp"
+            android:ems="10"
+            android:hint="Search"
+            android:inputType="none" />
+
+        <Button
+            android:id="@+id/buttonClearSearch"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignEnd="@+id/editTextTextSearch"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/cross"
+            android:scaleX=".5"
+            android:scaleY=".5" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="679dp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineSR"
+        app:layout_constraintStart_toStartOf="@+id/guidelineSL"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+        <ListView
+            android:id="@+id/listViewSearchResults"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/layoutDictInfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="200dp"
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"/>
+            <Button
+                android:id="@+id/buttonSetDict"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_marginBottom="300dp"
+                android:text="switch dictionary" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

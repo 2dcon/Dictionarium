@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="font_size_0">
+        <item name="font_small">18sp</item>
+        <item name="font_medium">20sp</item>
+        <item name="font_large">22sp</item>
+        <item name="font_xlarge">25sp</item>
+    </style>
+    <style name="font_size_1">
+        <item name="font_small">36sp</item>
+        <item name="font_medium">40sp</item>
+        <item name="font_large">44sp</item>
+        <item name="font_xlarge">50sp</item>
+    </style>
+</resources>

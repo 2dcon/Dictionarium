@@ -1,0 +1,26 @@
+<resources>class SettingsFragment: PreferenceFragmentCompat() {
+        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+            setPreferencesFromResource(R.xml.preference, rootKey)
+        }
+    <string name="app_name">AutoCompleteTextViewInKotlin</string>
+    <string name="hint">Please type language...</string>
+    <string name="submit">Submit</string>
+    <string name="submitted_lang">Submitted language:</string>
+
+    <!--    languages-->
+    <string name="en-us">English (United States)</string>
+
+
+
+    <string-array name="Languages">
+        <item>Java</item>
+        <item>Kotlin</item>
+        <item>Swift</item>
+        <item>Python</item>
+        <item>Scala</item>
+        <item>Perl</item>
+        <item>Javascript</item>
+        <item>Jquery</item>
+    </string-array>
+
+</resources>
