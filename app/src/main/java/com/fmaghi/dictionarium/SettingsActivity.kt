@@ -3,6 +3,12 @@ package com.fmaghi.dictionarium
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.PopupWindow
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
@@ -59,15 +65,17 @@ class SettingsFragment: PreferenceFragmentCompat() {
         // TODO: manage dictionaries (set default, delete)
         setPreferencesFromResource(R.xml.preference, rootKey)
 
-        val dictPath = findPreference<Preference>("dictPath")
-        dictPath?.setOnPreferenceClickListener {
-            // check permission
-            val permissionStatus = context?.checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            if (permissionStatus == PackageManager.PERMISSION_DENIED){
-                requestPermissionLauncher.launch(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-            } else {
-                selectFile.launch("*/*")
-            }
+        val defaultDict = findPreference<Preference>("default_dictionary")
+        defaultDict?.setOnPreferenceClickListener {
+            val popupWindow = PopupWindow(this.view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            popupWindow.contentView = layoutInflater.inflate(R.layout.window_select_default_dict, null)
+
+            val listViewDicts = popupWindow.contentView.findViewById<ListView>(R.id.dictionary_list)
+
+            // read metas
+
+//            val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1,)
+//            dictList.adapter =
 
             true
         }

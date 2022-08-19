@@ -8,5 +8,6 @@
     <!--    preference keys-->
     <string name="preference_file">com.fmaghi.dictionarium.PREFERENCE</string>
     <string name="preference_dictionary_path">com.fmaghi.dictionarium.PREFERENCE.PATH</string>
+    <string name="preference_default_dictionary">com.fmaghi.dictionarium.PREFERENCE.DEFAULT_DICT</string>
 
 </resources>

@@ -17,6 +17,7 @@ class SearchPaneFragment : Fragment() {
     private lateinit var editTextTextSearch: EditText
     private lateinit var searchResults: ListView
     private lateinit var buttonSetDict: Button
+    private lateinit var dictListAdapter: DictListAdapter
 
     private val reader = DictionaryReader()
 
@@ -48,6 +49,8 @@ class SearchPaneFragment : Fragment() {
                     input?.copyTo(out)
                 }
             }
+
+            dictListAdapter.loadMeta()
         }
     }
 
@@ -80,7 +83,7 @@ class SearchPaneFragment : Fragment() {
             }
 
             val viewDictList = popupWindow.contentView.findViewById<ExpandableListView>(R.id.dictionary_list)
-            val dictListAdapter = DictListAdapter(this, popupWindow, reader)
+            dictListAdapter = DictListAdapter(this, popupWindow, reader)
 
             viewDictList.setAdapter(dictListAdapter)
 //            viewDictList.setOnChildClickListener { _, _, groupPosition, childPosition, _ ->

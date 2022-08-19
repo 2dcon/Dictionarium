@@ -143,7 +143,7 @@ data class DefinitionByPos(val pos: String, val definitionGroups: List<List<Stri
 data class Expression(var text: String, var meaning: String)
 
 //data class DictionaryMeta (val dictionaryName: String, val language: String, val path: String)
-data class DictionaryMeta(val internalDir: String, val fileName: String, val dictionaryName: String, val language: String) {
+data class DictionaryMeta(val internalDir: String, val fileName: String, val dictionaryName: String, val date: Int, val language: String) {
     val path = "$internalDir/$fileName"
     override fun toString(): String = "dict=$dictionaryName, lang=$language, name=$fileName"
 }

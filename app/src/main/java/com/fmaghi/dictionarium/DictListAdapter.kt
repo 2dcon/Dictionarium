@@ -88,9 +88,11 @@ class DictListAdapter internal constructor(private val searchPaneFragment: Searc
 
         val buttonDelDict = childView.findViewById<Button>(R.id.delete_dictionary)
         buttonDelDict.setOnClickListener {
-            Log.i("DictListAdapter", "delete_dictionary clicked!")
             val windowConfirm = PopupWindow(searchPaneFragment.view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             windowConfirm.contentView = inflater.inflate(R.layout.window_delete_dictionary, null)
+
+            val confirmMessage = windowConfirm.contentView.findViewById<TextView>(R.id.delete_dictionary_message)
+            confirmMessage.text = "Delete ${getChild(groupPosition, childPosition).dictionaryName}?"
 
             val buttonBackground = windowConfirm.contentView.findViewById<Button>(R.id.button_close_window)
             buttonBackground.setOnClickListener {
@@ -100,6 +102,7 @@ class DictListAdapter internal constructor(private val searchPaneFragment: Searc
             val buttonConfirm = windowConfirm.contentView.findViewById<Button>(R.id.button_delete_dictionary)
             buttonConfirm.setOnClickListener {
                 deleteDictionary(getChild(groupPosition, childPosition))
+                windowConfirm.dismiss()
             }
 
             windowConfirm.showAtLocation(searchPaneFragment.view, Gravity.CENTER, 0, 0)
@@ -112,7 +115,12 @@ class DictListAdapter internal constructor(private val searchPaneFragment: Searc
 
     override fun areAllItemsEnabled(): Boolean = false
 
-    private fun loadMeta() {
+    fun loadMeta() {
+        // clear lists
+        dictMetaList.clear()
+        languageList.clear()
+        dictByLang.clear()
+
         val metaFile = File(context?.filesDir, metaFileName)
         if (!metaFile.exists()) {
             metaFile.createNewFile()
@@ -124,17 +132,20 @@ class DictListAdapter internal constructor(private val searchPaneFragment: Searc
         var dict = ""
         var lang = ""
         var name = ""
+        var date = 0
 
         for (line in metaFile.readLines()) {
             if (line.startsWith("dict=")) dict = line.substring(5)
+            if (line.startsWith("date=")) date = line.substring(5).toInt()
             if (line.startsWith("lang=")) lang = line.substring(5)
             if (line.startsWith("name=")) name = line.substring(5)
 
             if (line.startsWith(metaEndMark)) {
-                dictMetaList.add(DictionaryMeta(dir, name, dict, lang))
+                dictMetaList.add(DictionaryMeta(dir, name, dict, date, lang))
                 dict = ""
                 lang = ""
                 name = ""
+                date = 0
             }
         }
 
@@ -161,7 +172,7 @@ class DictListAdapter internal constructor(private val searchPaneFragment: Searc
                 var dictLang = ""
                 if (first2lines[1].length > 5) dictLang = first2lines[1].substring(5)
 
-                val newMeta = DictionaryMeta(dir, it.name, dictName, dictLang)
+                val newMeta = DictionaryMeta(dir, it.name, dictName, date, dictLang)
                 dictMetaList.add(newMeta)
                 isMetaChanged = true
             }
@@ -187,7 +198,7 @@ class DictListAdapter internal constructor(private val searchPaneFragment: Searc
         }
         Log.i("DictListAdapter", "Loaded ${dictMetaList.size} dictionaries")
         languageList.sort()
-
+        notifyDataSetChanged()
     }
 
     private fun fileInMeta(path: String) : Boolean {
@@ -206,7 +217,6 @@ class DictListAdapter internal constructor(private val searchPaneFragment: Searc
         if (success) {
             Log.i("DictListAdapter", "Deleted dictionary ${meta.dictionaryName}")
             loadMeta()
-            notifyDataSetChanged()
         } else {
             Log.i("DictListAdapter", "Failed to delete ${meta.path}")
         }
